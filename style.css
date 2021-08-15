@@ -1,0 +1,20 @@
+body {
+  background-color: #582f5f;
+}
+.timer {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 20%;
+}
+.value {
+  text-align: center;
+}
+.field {
+  padding-right: 30px;
+}
+span {
+  display: block;
+  font-size: 80px;
+  color: blueviolet;
+}

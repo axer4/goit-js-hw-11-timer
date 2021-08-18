@@ -8,6 +8,7 @@ class CountdownTimer {
     seconds: document.querySelector("span[data-value='secs']"),
         }
         this.targetDate = new Date('Aug 20, 2021');
+        this.countdown = null;
     }
     calc = () => {
     const currentDate = Date.now();
@@ -15,14 +16,17 @@ class CountdownTimer {
     const days = Math.floor(time / (1000 * 60 * 60 * 24))
     const hours = Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const mins = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
-    const secs = Math.floor((time % (1000 * 60)) / 1000);
+        const secs = Math.floor((time % (1000 * 60)) / 1000);
+        if (this.targetDate === currentDate || this.targetDate < currentDate) {
+            clearInterval(this.countdown);
+        }
     this.refs.days.textContent = days;
     this.refs.hours.textContent = hours;
     this.refs.minutes.textContent = mins;
     this.refs.seconds.textContent = secs;
     }
     timerStart = () => {
-        setInterval(this.calc, 1000);
+        this.countdown = setInterval(this.calc, 1000);
     }
 }
 const timer = new CountdownTimer();
